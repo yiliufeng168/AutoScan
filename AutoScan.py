@@ -9,7 +9,7 @@ def progress_callback(_, progress):
 
 
 def main(host):
-    nm = nmap.PortScanner()
+    nm = nmap.PortScannerAsync()
     nm.scan(hosts=host, arguments='-p- -sS -T4', callback=progress_callback)
 
     for receiver in RECEIVERS:
