@@ -1,9 +1,9 @@
 # 配置文件
 
-HOST = ''
+MAIL_HOST = ''
+MAIL_PORT = 465
 USERNAME = ''
 PASSWORD = ''
-PORT = 465
 SMTP_TLS = False
 SMTP_SSL = True
 
