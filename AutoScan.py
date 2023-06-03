@@ -4,14 +4,16 @@ from config import RECEIVERS
 from util import send_mail
 
 
-def progress_callback(_, progress):
-    print(f"Progress: {progress}%")
+def progress_callback(host, scan_data):
+    print('------------------')
+    print('Host:', host)
+    print('State:', scan_data['nmap']['scanstats']['uphosts'])
+    print('Open ports:', list(scan_data['scan'][host]['tcp'].keys()))
 
 
 def main(host):
     nm = nmap.PortScannerAsync()
     nm.scan(hosts=host, arguments='-p- -sS -T4', callback=progress_callback)
-
     for receiver in RECEIVERS:
         send_mail(receiver, '主机扫描结果', nm.csv())
 
