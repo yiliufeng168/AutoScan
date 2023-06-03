@@ -14,6 +14,9 @@ def progress_callback(host, scan_data):
 def main(host):
     nm = nmap.PortScannerAsync()
     nm.scan(hosts=host, arguments='-p- -sS -T4', callback=progress_callback)
+    while nm.still_scanning():
+        print('Waiting...')
+        nm.wait(2)
     for receiver in RECEIVERS:
         send_mail(receiver, '主机扫描结果', nm.csv())
 
