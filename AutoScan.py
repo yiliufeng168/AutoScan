@@ -18,7 +18,7 @@ def main(host):
         print('Waiting...')
         nm.wait(2)
     for receiver in RECEIVERS:
-        send_mail(receiver, '主机扫描结果', nm.csv())
+        send_mail(receiver, '主机扫描结果', "扫描完成")
 
 
 if __name__ == '__main__':
